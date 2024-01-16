@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get your all urls</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <!-- Todo::  create cards to render urls ... -->
+    <div class="url--app list--url">
+        <h5 class="page--url--text">Url list</h5>
+        <% url.forEach((urls)=>{ %>
+            <div class="url--card">
+             <p>ShortUrl: <a href="<%= urls.shortUrl %>"><%= urls.shortUrl %></a></p>
+             <p>TargetUrl: <a href="<%= urls.longUrl %>"><%= urls.longUrl %></a></p>  
+            <h5>ClickCount: <%= urls.click %></h5>
+            </div>
+     <% }) %> 
+    </div>
+</body>
+</html>

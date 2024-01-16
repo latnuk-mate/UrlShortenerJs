@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE WHOLE NEW URL SHORTENER</title>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="url--app">
+    <header>
+        <nav class="nav">
+            <h4 class="nav--brand">URLSHORTENER 
+                <img src="/img/link.png" alt="urllink" class="img--link">
+            </h4>
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="Url--Endpoint">
+        <form action="/api" class="first--endpoint--form" method="post">
+            <div> 
+            <input type="text" name="full_url" class="url--input" placeholder="Paste your url here...">
+            </div>
+            <button class="submit--btn">Send Request</button>
+        </form>
+    </section>
+        <form action="/urlredirect" method="post" class="second--endpoint">
+            <div class="first--block">
+                <input type="text" name="visitUrl" class="shortUrl--input" value="<%=url %>">
+                <button class="redirect--btn">Visit The Url</button>
+            </div>
+        </form>
+
+        <form action="/urlInfo" method="post" class="third--endpoint">
+            <div class="second--block">
+                <input type="text" name="visitUrlInfo" class="secretkey--input" value="<%=secretKey %>" placeholder="Your secretKey will be visible here...">
+                <button class="url--info--btn">Get Url Info</button>
+            </div>
+        </form>
+    <div class="url--list--link">If you want to check all your saved Urls! click 
+    <a href="/list" target="_blank">Url lists</a>.</div>
+    </div>
+
+</body>
+</html>
