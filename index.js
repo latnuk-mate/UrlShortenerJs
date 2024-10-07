@@ -9,7 +9,8 @@ const app = express();
 
 // configuring credentials...
 const PORT = process.env.PORT;
-const base_url = process.env.DEV_BASE_URI || process.env.PROD_BASE_URL;
+const base_url = process.env.DEV_BASE_URI || process.env.PROD_BASE_URI;
+
 
 
 // setting up the template engine..
