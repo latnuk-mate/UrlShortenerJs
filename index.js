@@ -160,5 +160,5 @@ app.post('/urlInfo', async (req,res)=>{
 
 // The server is up and running...
 app.listen(PORT,()=>{
-    console.log('server is running on port ',PORT);
+    console.log('server is running on port',PORT);
 })
