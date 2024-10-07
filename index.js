@@ -1,12 +1,16 @@
 require('dotenv').config();
 const express = require('express');
 const validUrl = require('valid-url');
-const Path = require('path')
-const ejs = require('ejs');
+const Path = require('path');
 const axios = require('axios');
 const generateKey = require('./helper/generate_key')
 const CountClick = require('./helper/counter');
-const app = express()
+const app = express();
+
+// configuring credentials...
+const PORT = process.env.PORT;
+const base_url = process.env.DEV_BASE_URI || process.env.PROD_BASE_URL;
+
 
 // setting up the template engine..
 app.set('views', 'views');
@@ -108,7 +112,7 @@ app.post('/urlredirect' , async(req,res)=>{
 app.post('/api' , async(req,res)=>{
     const longUrl = req.body.full_url;
     
-            if(!validUrl.isUri(process.env.Base_Url)){
+            if(!validUrl.isUri(base_url)){
                     res.status(401).json('Not a valid Url')
             }
         if(validUrl.isUri(longUrl)){
@@ -117,7 +121,7 @@ app.post('/api' , async(req,res)=>{
             if(url){
                 res.render('index', {url: url.shortUrl, secretKey : url.secretkey})
             }else{
-                let shortUrl = process.env.Base_Url + '/'+ key;
+                let shortUrl = base_url + '/'+ key;
                 url = new Url({
                         urlId: key,
                         secretkey,
@@ -154,6 +158,6 @@ app.post('/urlInfo', async (req,res)=>{
 
 
 // The server is up and running...
-app.listen(4000,()=>{
+app.listen(PORT,()=>{
     console.log('server is running on port 4000')
 })
